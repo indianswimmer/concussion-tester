@@ -3,7 +3,6 @@ import threading
 import time
 from pythonosc import dispatcher
 from pythonosc import osc_server
-import pandas
 
 STATE = None
 
