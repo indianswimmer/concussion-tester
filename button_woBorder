@@ -1,0 +1,22 @@
+html>
+    <head>
+        <title>testingButton</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            input[type="image"]{
+                display:block;
+                background-color:white;
+                color:white;
+                border: none;
+                outline:none;
+            }  
+            </style>
+    </head>
+    <body>
+        <div>
+            <input type="image" src="/Users/Andrew/Downloads/play-button-icon-93570.png"  onclick ="test()"> 
+        </div>
+    </body>
+    <script type="text/javascript" src="testButton.js"></script>
+</html>
