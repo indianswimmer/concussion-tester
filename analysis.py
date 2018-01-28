@@ -1,8 +1,8 @@
-import python_example as pe
+import test
 import pandas as pd
 
 
 
-def analysis(data = pe.rows_list):
+def analysis(data = test.rows_list):
     df = pd.DataFrame(data)
     import pdb;pdb.set_trace()

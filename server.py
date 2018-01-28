@@ -17,7 +17,7 @@ def login():
     collectData()
 
     while True:
-        from python_example import STATE
+        from test import STATE
         if STATE is not None:
             return jsonify({'result': str(STATE)})
 
