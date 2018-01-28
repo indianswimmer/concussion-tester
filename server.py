@@ -1,5 +1,6 @@
 import os
 import time
+import threading
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -12,8 +13,7 @@ CORS(app)
 
 @app.route('/send_data', methods=['POST'])
 def login():
-    time.sleep(4)
-    # data = request.get_json()
+    time.sleep(300)
     return jsonify({'pct_chance': str(randint(0, 100))})
 
 

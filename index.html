@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>EKG App</title>
+    <title>EEG App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
@@ -59,12 +59,13 @@
             el: '#app',
             data: {
                 state: 'ready',
-                pct_chance: ''
+                pct_chance: '_ '
             },
             methods: {
                 start: function() {
                     console.log('start button clicked');
                     this.state = 'in_progress';
+                    this.pct_chance = '_ ';
 
                     const self = this;
                     axios.post('http://localhost:5000/send_data', {})
