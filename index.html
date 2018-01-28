@@ -31,9 +31,10 @@
     <div id="app">
         <div class="container" align="middle">
             <div v-if="state === 'ready'">
-                <button class="icon_button" v-on:click="start">
-                    <i class="material-icons">play_arrow</i>
-                </button>
+                <input
+                    type="image"
+                    src="./play-button-icon-93570.png"
+                    v-on:click="start"> 
             </div>
             <div v-else-if="state === 'in_progress'">
                 <div class="progress">
