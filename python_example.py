@@ -31,5 +31,3 @@ def main():
     time.sleep(5)
     server.shutdown()
     print("Done serving on {}".format(server.server_address))
-
-main()
