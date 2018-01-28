@@ -19,8 +19,8 @@ def login():
 
     while True:
         from python_example import STATE
-        if STATE == 'done':
-            return jsonify({'pct_chance': str(randint(0, 100))})
+        if STATE is not None:
+            return jsonify({'result': str(randint(0, 100))})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=int(os.getenv('PORT')))

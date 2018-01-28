@@ -63,7 +63,6 @@
             },
             methods: {
                 start: function() {
-                    console.log('start button clicked');
                     this.state = 'in_progress';
                     this.pct_chance = '_ ';
 
@@ -72,7 +71,7 @@
                     .then(function (res) {
                         console.log(res);
                         self.state = 'done';
-                        self.pct_chance = res.data.pct_chance;
+                        self.pct_chance = res.data.result;
                     })
                     .catch(function (err) {
                         console.log(err);

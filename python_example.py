@@ -5,7 +5,7 @@ from pythonosc import dispatcher
 from pythonosc import osc_server
 import pandas
 
-STATE = ''
+STATE = None
 
 
 def eeg_handler(unused_addr, args, ch1, ch2, ch3, ch4=0):
