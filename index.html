@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>EKG App</title>
+    <title>EEG App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
@@ -30,10 +30,16 @@
 <body>
     <div id="app">
         <div class="container" align="middle">
-            <div v-if="state === 'ready'">
+            <div v-if="state === 'ready'" style="padding-top:8%;">
+                <!--
                 <button class="icon_button" v-on:click="start">
                     <i class="material-icons">play_arrow</i>
                 </button>
+                -->
+                <input
+                    type="image"
+                    src="./play-button-icon-93570.png"
+                    v-on:click="start">
             </div>
             <div v-else-if="state === 'in_progress'">
                 <div class="progress">
@@ -59,19 +65,19 @@
             el: '#app',
             data: {
                 state: 'ready',
-                pct_chance: ''
+                pct_chance: '_ '
             },
             methods: {
                 start: function() {
-                    console.log('start button clicked');
                     this.state = 'in_progress';
+                    this.pct_chance = '_ ';
 
                     const self = this;
                     axios.post('http://localhost:5000/send_data', {})
                     .then(function (res) {
                         console.log(res);
                         self.state = 'done';
-                        self.pct_chance = res.data.pct_chance;
+                        self.pct_chance = res.data.result;
                     })
                     .catch(function (err) {
                         console.log(err);

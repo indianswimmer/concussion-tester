@@ -5,6 +5,8 @@ import pandas as pd
 from pythonosc import dispatcher
 from pythonosc import osc_server
 
+STATE = None
+
 
 global rows_list
 rows_list = []
@@ -34,13 +36,17 @@ def collectData(signal="eeg"):
     server_thread = threading.Thread(target=server.serve_forever)
     print("Serving on {}".format(server.server_address))
     server_thread.start()
+
     time.sleep(5)
+    global STATE
+    STATE = 'done'
+
     server.shutdown()
     print("Done serving on {}".format(server.server_address))
 
 def analysis(data = rows_list):
     df = pd.DataFrame(data)
-    import pdb;pdb.set_trace()
+    # import pdb;pdb.set_trace()
     tot = 0
     count = 0
     for column in df:
