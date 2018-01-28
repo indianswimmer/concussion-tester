@@ -2,9 +2,8 @@ import os
 import time
 import threading
 
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify
 from flask_cors import CORS
-from random import randint
 
 from python_example import main
 
@@ -20,7 +19,7 @@ def login():
     while True:
         from python_example import STATE
         if STATE is not None:
-            return jsonify({'result': str(randint(0, 100))})
+            return jsonify({'result': str(STATE)})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=int(os.getenv('PORT')))

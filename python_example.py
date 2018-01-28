@@ -39,7 +39,7 @@ def collectData(signal="eeg"):
 
     time.sleep(5)
     global STATE
-    STATE = 'done'
+    STATE = analysis(rows_list)
 
     server.shutdown()
     print("Done serving on {}".format(server.server_address))
@@ -55,7 +55,8 @@ def analysis(data = rows_list):
     avg = tot / count
     return avg % 100
 
-
+"""
 collectData()
 res = analysis(rows_list)
 print ("result:", res)
+"""
