@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>EKG App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .container div {
+            padding-top: 30%;
+        }
+
+        .material-icons {
+            font-size: 200px;
+        }
+
+        .icon_button {
+            border: none;
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container" align="middle">
+            <div v-if="state === 'ready'">
+                <button class="icon_button" v-on:click="start">
+                    <i class="material-icons">play_arrow</i>
+                </button>
+            </div>
+            <div v-else-if="state === 'in_progress'">
+                <div class="progress">
+                    <div class="indeterminate"></div>
+                </div>
+            </div>
+            <div v-else-if="state === 'done'">
+                <p class="flow-text">
+                    There is a {{ pct_chance }}% chance you have a concussion
+                </p>
+
+                <button class="icon_button" v-on:click="state = 'ready'">
+                    <i class="medium material-icons">arrow_back</i>
+                </button>
+            </div>
+            <div v-else>
+                Not Connected
+            </div>
+        </div>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                state: 'ready',
+                pct_chance: ''
+            },
+            methods: {
+                start: function() {
+                    console.log('start button clicked');
+                    this.state = 'in_progress';
+
+                    const self = this;
+                    axios.post('http://localhost:5000/send_data', {})
+                    .then(function (res) {
+                        console.log(res);
+                        self.state = 'done';
+                        self.pct_chance = res.data.pct_chance;
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                        self.state = 'ready';
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
