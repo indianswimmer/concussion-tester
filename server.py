@@ -5,7 +5,7 @@ import threading
 from flask import Flask, jsonify
 from flask_cors import CORS
 
-from python_example import *
+from test import *
 
 
 app = Flask(__name__)
