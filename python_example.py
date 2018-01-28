@@ -53,7 +53,7 @@ def analysis(data = rows_list):
         tot += df[column].mean()
         count += 1
     avg = tot / count
-    return avg % 100
+    return int(avg % 100)
 
 """
 collectData()

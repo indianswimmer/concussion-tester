@@ -5,7 +5,7 @@ import threading
 from flask import Flask, jsonify
 from flask_cors import CORS
 
-from python_example import main
+from python_example import *
 
 
 app = Flask(__name__)
@@ -14,7 +14,7 @@ CORS(app)
 
 @app.route('/send_data', methods=['POST'])
 def login():
-    main()
+    collectData()
 
     while True:
         from python_example import STATE
@@ -22,4 +22,4 @@ def login():
             return jsonify({'result': str(STATE)})
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=int(os.getenv('PORT')))
+    app.run(host='0.0.0.0', port=5000)
